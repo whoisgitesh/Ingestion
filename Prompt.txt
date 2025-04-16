@@ -1,0 +1,78 @@
+ Data Ingestion Assignment - Prompt Summary
+ 
+ Core Functional Requirements
+Application Type: Web application with backend logic and frontend UI.
+
+Bidirectional Flow:
+
+ClickHouse → Flat File ingestion.
+
+Flat File → ClickHouse ingestion.
+
+Source Selection: UI must allow users to choose the data source ("ClickHouse" or "Flat File").
+
+ClickHouse Connection (as Source):
+
+UI inputs for Host, Port, Database, User, and JWT Token.
+
+Authentication using the provided JWT token via a compatible ClickHouse client library.
+
+Use official ClickHouse client libraries (Golang, Python, Java).
+
+Flat File Integration:
+
+UI inputs for local flat file name and delimiters.
+
+Use any IO library for file operations.
+
+Schema Discovery & Column Selection:
+
+Connect to the source and fetch the list of available tables (ClickHouse) or the schema of the Flat File data.
+
+Display column names in the UI with selection controls (e.g., checkboxes).
+
+Ingestion Process:
+
+Execute data transfer based on user selections.
+
+Implement efficient data handling (batching/streaming recommended).
+
+Completion Reporting: Display the total count of ingested records upon success.
+
+Error Handling: Basic error handling for connection, authentication, query, and ingestion errors with user-friendly messages.
+
+3. Inquiry on Best Practices
+Request for best practices on handling large datasets during ingestion, focusing on efficiency, reliability, and scalability.
+
+4. Folder Structure Definition
+Request to define the path of each file in the data_ingestion folder, including backend and frontend components, configuration, and tests.
+
+5. Backend Folder Code
+Request for the source code of each file in the backend folder, implementing the core functionalities such as ClickHouse connection, ingestion logic, schema discovery, authentication, and error handling.
+
+6. Dependency Installation Reminder
+Reminder to install dependencies such as fastapi, uvicorn, clickhouse-driver, pandas, and python-jose, and to replace placeholder secrets with actual secure values.
+
+7. Frontend Code Request
+Request for the frontend source code implementing the UI components for source selection, authentication, column selection, file upload, reporting, and API communication.
+
+8. Frontend index.html
+Request for the index.html file content to serve as the root HTML template for the React frontend.
+
+9. Frontend package.json and Dockerfile
+Request for the package.json and Dockerfile for the frontend, enabling dependency management and containerization.
+
+10. Enhanced UI Requirements
+Clear source/target selection.
+
+Input fields for all necessary connection parameters (ClickHouse source/target, Flat File).
+
+Mechanism to list tables (ClickHouse) or identify Flat File data source.
+
+Column list display with selection controls.
+
+Action buttons: "Connect", "Load Columns", "Preview", "Start Ingestion".
+
+Status display area: Connecting, Fetching, Ingesting, Completed, Error.
+
+Result display area: record count or error message.
