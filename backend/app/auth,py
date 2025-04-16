@@ -1,0 +1,14 @@
+from fastapi import Header, HTTPException, Security
+from jose import JWTError, jwt
+
+SECRET_KEY = "your-secret-key"
+
+async def verify_jwt_token(authorization: str = Header(...)):
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Invalid authorization header")
+    token = authorization.split(" ")[1]
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        return payload
+    except JWTError:
+        raise HTTPException(status_code=401, detail="Invalid token")
